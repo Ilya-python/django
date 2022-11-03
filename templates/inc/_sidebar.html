@@ -1,4 +1,4 @@
-
+{% load my_tags %}
                         <div class="search-bar w3layouts-newsletter">
                             <h3 class="sear-head editContent" >Поиск игры</h3>
                             <form action="#" method="post" class="d-flex editContent" >
@@ -7,25 +7,17 @@
                             </form>
                         </div>
                         <!--preference -->
+
                         <div class="left-side my-4">
                             <h3 class="sear-head editContent" >Жанры</h3>
                             <ul class="w3layouts-box-list">
+                                {% get_categories as category %}
+                                {% for cat in category %}
                                 <li class="editContent" >
                                     <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Жанр1</span>
+                                    <span class="span editContent" >{{ cat.title }}</span>
                                 </li>
-                                    <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Жанр2</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Жанр3</span>
-                                </li>
-                                <li class="editContent" >
-                                    <input type="checkbox" class="checked">
-                                    <span class="span editContent" >Жанр4</span>
-                                </li>
+                                    {% endfor %}
                             </ul>
                         </div>
                         <!-- // preference -->
