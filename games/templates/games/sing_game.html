@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block title %}
+    <title>{{game.title}}</title>
+    {% endblock %}
+
+    {% block content %}
+    <!-- Links -->
+    <link rel="stylesheet" href="{% static 'games/slick/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'games/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'games/css/main.css' %}">
+    <!-- content -->
+    <div class="left-ads-display col-lg-8">
+                    <div class="row">
+                        <div class="desc1-left col-md-6">
+                            <img src="{{ game.poster.url }}" class="img-fluid" alt="">
+                        </div>
+                        <div class="desc1-right col-md-6 pl-lg-4">
+                            <h3 class="editContent" style="outline: none; cursor: inherit;">
+                                {{ game.title }}</h3>
+                            
+                            <ul>
+                                <li style="list-style: none"><span><b>Год:</b> {{ game.year}}</span></li>
+                                <li style="list-style: none">
+                                    <span><b>Платформы:</b>
+                                    {% for plat in game.platforms.all %}
+                                    <a href="#"> {{ plat.title }}  </a>
+                                    {%endfor%}
+                                    </span>
+                                </li>
+                                <li style="list-style: none"><span><b>Слоган:</b> {{game.slogan}}</span>
+                                </li>
+                                <li style="list-style: none">
+                                    <span><b>Разработчики:</b>
+                                        {% for dev in game.developers.all %}
+                                        <a href="#"> {{ dev.title }}  </a>
+                                        {%endfor%}
+                                    </span></li>
+                                <li style="list-style: none"><span><b>Персонажи:</b> <a href="">Фокс<a>, Кловер, Буч</span></li>
+                                <li style="list-style: none"><span><b>Жанр:</b>
+                                    {% for cat in game.category.all %}
+                                    <a href="#"> {{ cat.title }}  </a>
+                                    {%endfor%}
+                                </span>
+                                </li>
+                                <li style="list-style: none"><span><b>Релиз на ПК:</b> {{game.realease_pc}}</span>
+                                </li>
+                                <li style="list-style: none"><span><b>Релиз на консоли:</b> {{game.realease_console}}</span>
+                                </li>
+                                <li style="list-style: none"><span><b><a  href="#popup" class="popup_link">Системные требования</a></b></span>
+                                </li>
+                   
+                                <li style="list-style: none">
+                                    <a href="#"><b>Рейтинг:</b>
+                                    <span class="fa fa-star" aria-hidden="true"
+                                          style="outline: none; cursor: inherit;"></span>
+                                        <span class="fa fa-star" aria-hidden="true"
+                                              style="outline: none; cursor: inherit;"></span>
+                                        <span class="fa fa-star" aria-hidden="true"
+                                              style="outline: none; cursor: inherit;"></span>
+                                        <span class="fa fa-star" aria-hidden="true"
+                                              style="outline: none; cursor: inherit;"></span>
+                                        <span class="fa fa-star" aria-hidden="true"
+                                              style="outline: none; cursor: inherit;"></span>
+                                        <span class="editContent"
+                                              style="outline: none; cursor: inherit;">5.0</span>
+                                    </a>
+                                </li>
+                                <br>
+                                <br>
+                                <div class="share-desc">
+                                    <div class="share">
+                                        <h4 class="editContent"
+                                            style="outline: none; cursor: inherit;">
+                                            Поделиться:</h4>
+                                        <ul class="w3layouts_social_list list-unstyled">
+                                            <li>
+                                                <a href="#" class="w3pvt_facebook editContent"
+                                                   style="outline: none; cursor: inherit;">
+                                                <span class="fa fa-facebook-f"
+                                                      style="outline: none; cursor: inherit;"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="w3pvt_twitter editContent"
+                                                   style="outline: none; cursor: inherit;">
+                                                <span class="fa fa-twitter"
+                                                      style="outline: none; cursor: inherit;"></span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" class="w3pvt_dribble editContent"
+                                                   style="outline: none; cursor: inherit;">
+                                                <span class="fa fa-dribbble"
+                                                      style="outline: none; cursor: inherit;"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="row sub-para-w3layouts mt-5">
+
+                        <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
+                            Описание игры {{game.title}}</h3>
+                        <!--<p>
+                            <img src="bundles/images/about.jpg" class="img-fluid" alt="">
+                            <img src="bundles/images/admin.jpg" class="img-fluid" alt="">
+                            <img src="bundles/images/d1.jpg" class="img-fluid" alt="">
+                        </p> -->
+                        <p>
+                        </p>
+                        <p class="editContent" style="outline: none; cursor: inherit;"> {{ game.description }}
+                        </p>
+                        <p class="mt-3 italic-blue editContent" style="outline: none; cursor: inherit;">
+                            <iframe width="560" height="315" src="{{ game.trailer }}" title="YouTube video player"
+                                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </p>
+                         <p class="editContent" style="outline: none; cursor: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                    </div>
+                    <hr>
+                    <div class="wrapper_slider">
+                        <div class="slider">
+                            <!--
+                        <div class="slider__item filter">
+                        <a href="#popup_img" class="popup_link"><img src="slick/img/slides/big/s1.jpeg" alt=""></a>
+                        </div>
+                        <div class="slider__item">
+                        <a href="#popup_img1" class="popup_link"><img src="slick/img/slides/big/s2.jpg" alt=""></a>
+                        </div>
+                        <div class="slider__item filter">
+                        <a href="#popup_img2" class="popup_link"><img src="slick/img/slides/big/s3.jpg" alt=""></a>
+                        </div>
+                        <div class="slider__item">
+                        <a href="#popup_img3"  class="popup_link"><img src="slick/img/slides/big/s4.jpg" alt=""></a>
+                        </div> -->
+                        {% for scr in game.gamescreen_set.all %}
+                        <div class="slider__item filter">
+                           <a href="#popup_img{{scr.pk}}"  class="popup_link"><img src="{{ scr.screen.url }}" alt=""> </a>
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="single-form-left">
+                            <!-- contact form grid -->
+                            <div class="contact-single">
+                                <h3 class="editContent" style="outline: none; cursor: inherit;">
+                                    <span class="sub-tittle editContent"
+                                          style="outline: none; cursor: inherit;">02</span>Оставить отзыв</h3>
+                                <form action="#" method="get" class="mt-4">
+                                    <div class="form-group editContent"
+                                         style="outline: none; cursor: inherit;">
+                                        <label for="contactcomment" class="editContent"
+                                               style="outline: none; cursor: inherit;">Ваш комментарий
+                                            *</label>
+                                        <textarea class="form-control border" rows="5"
+                                                  id="contactcomment" required=""></textarea>
+                                    </div>
+                                    <div class="d-sm-flex">
+                                        <div class="col-sm-6 form-group p-0 editContent"
+                                             style="outline: none; cursor: inherit;">
+                                            <label for="contactusername" class="editContent"
+                                                   style="outline: none; cursor: inherit;">Имя
+                                                *</label>
+                                            <input type="text" class="form-control border"
+                                                   id="contactusername" required="">
+                                        </div>
+                                        <div class="col-sm-6 form-group ml-sm-3 editContent"
+                                             style="outline: none; cursor: inherit;">
+                                            <label for="contactemail" class="editContent"
+                                                   style="outline: none; cursor: inherit;">Email
+                                                *</label>
+                                            <input type="email" class="form-control border"
+                                                   id="contactemail" required="">
+                                        </div>
+                                    </div>
+                                    <button type="submit"
+                                            class="mt-3 btn btn-success btn-block py-3"
+                                            style="outline: none; cursor: inherit;">Отправить
+                                    </button>
+                                </form>
+                            </div>
+                            <!--  //contact form grid ends here -->
+                        </div>
+                        <div class="media py-5">
+                            <img src="bundles/images/te2.jpg" class="mr-3 img-fluid" alt="image"
+                                 style="outline: none; cursor: inherit;">
+                            <div class="media-body mt-4">
+                                <h5 class="mt-0 editContent"
+                                    style="outline: none; cursor: inherit;">Морозов Павлик</h5>
+                                <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
+                                    Крутая игра, особенно классный квест со взрывом Мегатонны.
+                                </p>
+                                <div class="media mt-5 editContent"
+                                     style="outline: none; cursor: inherit;">
+                                    <a class="pr-3" href="#">
+                                        <img src="bundles/images/te1.jpg" class="img-fluid "
+                                             alt="image" style="outline: none; cursor: inherit;">
+                                    </a>
+                                    <div class="media-body">
+                                        <h5 class="mt-0 editContent"
+                                            style="outline: none; cursor: inherit;">Плеханова Валерия</h5>
+                                        <p class="mt-2 editContent"
+                                           style="outline: none; cursor: inherit;"> Эм...только не говори, что ты её взорвал...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% endblock %}
+
+
+{% block popup %}
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <!-- Подключаем слайдер Slick -->
+    <script src="{% static 'games/slick/js/slick.min.js' %}"></script>
+            <!-- Подключаем файл скриптов -->
+    <script src="{% static 'games/slick/js/script.js' %}"></script>
+    <script src="{% static 'games/js/main.js' %}"></script>
+
+<div id="popup" class="popup">
+    <div class="pop_body">
+        <div class="pop_content">
+            <a href="#hd1" class="pop_close close_p">X</a>
+            <div class="pop_title">Системные требования</div>
+            <div class="pop_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Harum minima nulla quae! Ab consectetur consequatur delectus distinctio enim facere hic maiores natus pariatur,
+            placeat qui quibusdam rerum sit ullam veniam!</div>
+        </div>
+    </div>
+</div>
+
+{% for scr in game.gamescreen_set.all %}
+<div id="popup_img{{scr.pk}}" class="popup">
+    <div class="pop_body">
+        <div class="pop_content pop_con_img">
+            <a href="#hd1" class="pop_close close_p">X</a>
+            <div class="pop_img"><img src="{{scr.screen.url}}"></div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

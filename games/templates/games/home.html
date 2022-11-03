@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+    {% block banner %}
+    <div class="main-banner bg bg1" id="home" style="background-color: rgba(0, 0, 0, 0); margin-top: 0px;
+        background-image: url(&quot;{% static 'games/image/cyber.jpg' %}&quot;);">
+    {% endblock %}
+
+    {% block content %}
+    <div class="left-ads-display col-lg-9">
+                        <div class="row">
+                            {% for game in games %}
+                            <div class="col-md-4 product-men">
+                                <div class="product-shoe-info editContent text-center mt-lg-4" >
+                                    <div class="men-thumb-item">
+                                        <a href="{% url 'single_game' game.game_slug %}"><img src="{{ game.poster.url }}" class="img-fluid" alt="" ></a>
+                                    </div>
+                                    <div class="item-info-product">
+                                        <h4 class="">
+                                            <a href="moviesingle.html" class="editContent" >{{game.title}}</a>
+                                        </h4>
+
+                                        <div class="product_price">
+                                            <div class="grid-price">
+                                                {% if game.slogan %}
+                                                <span class="money editContent" >{{ game.slogan }}</span>
+                                                {% else %}
+                                                <span class="money editContent" >Слогана пока что нету.</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <ul class="stars">
+                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-half-o" aria-hidden="true" ></span></a></li>
+                                            <li><a href="#"><span class="fa fa-star-o" aria-hidden="true" ></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <!--<div class="grid-img-right mt-4 text-right bg bg1" >
+                            <span class="money editContent" >Flat 50% Off</span>
+                            <a href="moviesingle.html" class="btn" >Now</a>
+                        </div>-->
+                    </div>
+
+    {% endblock %}
+
+
