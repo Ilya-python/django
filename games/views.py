@@ -8,7 +8,7 @@ def index(request):
     """
     content = Games.objects.filter(is_pub=True)
     context = {'games':content, 'mark':1}
-    print('1')
+    print('2')
     return render(request, 'games/games.html', context)
 
 def get_game(request, slug):
