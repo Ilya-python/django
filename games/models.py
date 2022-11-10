@@ -3,6 +3,7 @@ from datetime import date
 from PIL import Image
 from django.conf import settings
 import os
+from django.urls import reverse
 # Create your models here.
 
 def gen_path(filename, dirname):
@@ -80,6 +81,9 @@ class Games(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('single_game', kwargs={'slug':self.game_slug})
 
     def save(self, *args, **kwargs):
         if self.poster and not os.path.exists(self.poster.path):

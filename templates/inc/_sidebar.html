@@ -7,19 +7,21 @@
                             </form>
                         </div>
                         <!--preference -->
-
+                        <form action="{% url 'filter' %}" method="get">
                         <div class="left-side my-4">
                             <h3 class="sear-head editContent" >Жанры</h3>
                             <ul class="w3layouts-box-list">
                                 {% get_categories as category %}
                                 {% for cat in category %}
                                 <li class="editContent" >
-                                    <input type="checkbox" class="checked">
+                                    <input type="checkbox" class="checked" name="cat" value="{{cat.title}}">
                                     <span class="span editContent" >{{ cat.title }}</span>
                                 </li>
                                     {% endfor %}
                             </ul>
                         </div>
+                            <button type='submit'>Find</button>
+                            </form>
                         <!-- // preference -->
                         <!-- discounts -->
                         <div class="left-side">
@@ -110,59 +112,6 @@
                         </div>
                         <!-- //reviews -->
                         <!-- deals -->
-                        <div class="deal-leftmk left-side">
-                            <h3 class="sear-head editContent">Последние добавленные</h3>
-                            <div class="special-sec1 row mt-3 editContent">
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/games/s4.jpg" class="img-fluid" alt="">
-                                </div>
-                                <div class="img-deal1 col-md-4">
-                                    <h3 class="editContent">Predator World</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/games/s2.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >SW: BattleFront</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/games/s1.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >Fallout 76</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/games/s5.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >PacMan 3</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-                            <div class="special-sec1 row mt-3 editContent" >
-                                <div class="img-deals col-md-4">
-                                    <img src="bundles/games/s3.jpg" class="img-fluid" alt="" >
-                                </div>
-                                <div class="img-deal1 col-md-8">
-                                    <h3 class="editContent" >Assasian Creed 2</h3>
-                                    <a href="moviesingle.html" class="editContent" ></a>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        {% get_last_games %}
                         <!-- //deals -->
 
