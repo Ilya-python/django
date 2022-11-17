@@ -37,6 +37,18 @@
         {% include 'inc/_navbar.html' %}
         </div>
         <!-- main-content -->
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-danger textalert" role="alert">
+            {{ msg }}
+        </div>
+        <style>
+            .textalert {
+            text-align: center;
+            }
+        </style>
+        {% endfor %}
+        {% endif %}
         <section class="ab-info-main py-md-5 py-4 editContent" style="padding-left: 3rem; padding-right: 3rem;">
             {% block container %}
                 <div class="container py-md-3">
