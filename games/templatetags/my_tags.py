@@ -1,5 +1,5 @@
 from django import template
-from games.models import Category, Games
+from games.models import Category, Games, Platforms
 
 register = template.Library()
 
@@ -21,3 +21,9 @@ def get_years():
         if y not in years:
             years.append(y)
     return years
+
+
+@register.simple_tag()
+def get_platforms():
+    platforms = Platforms.objects.all()
+    return platforms

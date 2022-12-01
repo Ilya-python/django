@@ -41,3 +41,14 @@ def games_filter(request):
     else:
         messages.error(request, 'юбой текст')
         return redirect('all_games')
+
+
+def games_by_name(request):
+    games = Games.objects.filter(title__icontains=request.GET.get("search_name"))
+    if len(games) == 0:
+        return redirect('sorry')
+    return render(request, 'games/games.html', {'games': games})
+
+
+def sorry_img (request):
+    return render(request, 'games/erorcode.html')

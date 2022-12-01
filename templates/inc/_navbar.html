@@ -1,4 +1,4 @@
-
+{% load my_tags %}
             <!-- header -->
             <header class="header">
                 <div class="container-fluid px-lg-5">
@@ -22,9 +22,10 @@
                                 <a href="#">Платформы <span class="fa fa-angle-down" aria-hidden="true"></span></a>
                                 <input type="checkbox" id="drop-2">
                                 <ul>
-                                    <li><a href="moviesingle.html">XBOX</a></li>
-                                    <li><a href="moviesingle.html">PlayStaton5</a></li>
-                                    <li><a href="moviesingle.html">PC</a></li>
+                                    {% get_platforms as platforms %}
+                                {% for platform in platforms %}
+                                    <li><a href="moviesingle.html">{{ platform.title }}</a></li>
+                                {% endfor %}
                                 </ul>
                             </li>
                             <li><a href="#">О нас</a></li>
