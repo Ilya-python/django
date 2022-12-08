@@ -4,11 +4,12 @@
                             {% for game in last_games %}
                             <div class="special-sec1 row mt-3 editContent">
                                 <div class="img-deals col-md-4">
-                                    <img src="{{ game.poster.url }}" class="img-fluid" alt="">
+                                    <a href="{{ game.get_absolute_url }}" class="editContent" >
+                                        <img src="{{ game.poster.url }}" class="img-fluid" alt="">
                                 </div>
                                 <div class="img-deal1 col-md-4">
                                     <h3 class="editContent">{{ game.title }}</h3>
-                                    <a href="#" class="editContent" ></a>
+                                     </a>
                                 </div>
                                 </div>
     {% endfor %}
