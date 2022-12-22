@@ -24,7 +24,7 @@
                                 <ul>
                                     {% get_platforms as platforms %}
                                 {% for platform in platforms %}
-                                    <li><a href="moviesingle.html">{{ platform.title }}</a></li>
+                                    <li><a href='{{ platform.get_absolute_url }}'>{{ platform.title }}</a></li>
                                 {% endfor %}
                                 </ul>
                             </li>

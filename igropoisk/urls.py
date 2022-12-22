@@ -22,7 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('test/', include('test_app.urls')),
     path('generate/', include('generator.urls')),
-    path('', include('games.urls'))
+    path('', include('games.urls')),
+    #path('register/',include('usercontrols.urls'))
+
 ]
 
 if settings.DEBUG:

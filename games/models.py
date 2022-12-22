@@ -49,7 +49,7 @@ class Category(models.Model):
     '''Жанры игр'''
     title = models.CharField(max_length=100, verbose_name='Название категории')
     description = models.TextField(verbose_name='Описание категории')
-    cat_slug = models.SlugField(verbose_name='url игры', default='dfd', max_length=100)
+    cat_slug = models.SlugField(verbose_name='url игры', unique=True, max_length=100)
 
     def get_absolute_url(self):
         return reverse('cat', kwargs={'slug': self.cat_slug})
@@ -67,7 +67,7 @@ class Developers(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название компании')
     description = models.TextField(verbose_name='Описание компании')
     img = models.ImageField(blank=True, verbose_name='Логотип')
-    dev_slug = models.SlugField(verbose_name='url игры', default='dfd', max_length=100)
+    dev_slug = models.SlugField(verbose_name='url игры', unique=True, max_length=100)
 
     def get_absolute_url(self):
         return reverse('dev', kwargs={'slug': self.dev_slug})

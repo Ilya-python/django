@@ -60,7 +60,7 @@ def get_category(request, slug):
     :param slug Уникальный слаг игры
     """
     cat = get_object_or_404(Category, cat_slug=slug)
-    return render(request, 'games/category.html', {'game': cat})
+    return render(request, 'games/category.html', {'cat': cat})
 
 
 def get_platforms(request, plat_id):
@@ -69,7 +69,7 @@ def get_platforms(request, plat_id):
     :param slug Уникальный слаг игры
     """
     plat = get_object_or_404(Platforms, pk=plat_id)
-    return render(request, 'games/platforms.html', {'game': plat})
+    return render(request, 'games/platforms.html', {'plat': plat})
 
 
 def get_developers(request, slug):
@@ -78,4 +78,4 @@ def get_developers(request, slug):
     :param slug Уникальный слаг игры
     """
     dev = get_object_or_404(Developers, dev_slug=slug)
-    return render(request, 'games/developers.html', {'game': dev})
+    return render(request, 'games/developers.html', {'dev': dev})

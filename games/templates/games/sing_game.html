@@ -25,7 +25,7 @@
                                 <li style="list-style: none">
                                     <span><b>Платформы:</b>
                                     {% for plat in game.platforms.all %}
-                                    <a href="#"> {{ plat.title }}  </a>
+                                    <a href="{{ plat.get_absolute_url }}"> {{ plat.title }}  </a>
                                     {%endfor%}
                                     </span>
                                 </li>
@@ -34,13 +34,13 @@
                                 <li style="list-style: none">
                                     <span><b>Разработчики:</b>
                                         {% for dev in game.developers.all %}
-                                        <a href="#"> {{ dev.title }}  </a>
+                                        <a href="{{ dev.get_absolute_url }}"> {{ dev.title }}  </a>
                                         {%endfor%}
                                     </span></li>
-                                <li style="list-style: none"><span><b>Персонажи:</b> <a href="">Фокс<a>, Кловер, Буч</span></li>
+
                                 <li style="list-style: none"><span><b>Жанр:</b>
                                     {% for cat in game.category.all %}
-                                    <a href="#"> {{ cat.title }}  </a>
+                                    <a href="{{ cat.get_absolute_url }}"> {{ cat.title }}  </a>
                                     {%endfor%}
                                 </span>
                                 </li>

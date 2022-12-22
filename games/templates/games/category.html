@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+
+
+    {% block title %}
+    <title>о категории</title>
+    {% endblock %}
+
+{% block content %}
+
+    <div class="left-ads-display col-lg-8">
+                    <div class="row">
+    <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">{{ cat.title }}</h3>
+
+                        <p class="editContent" style="outline: none; cursor: inherit;"> {{ cat.description }}</p>
+</div>
+        </div>
+
+{% endblock %}

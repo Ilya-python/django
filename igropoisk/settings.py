@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'test_app',
     'generator',
-    'games'
+    'games',
+    'usercontrols'
 ]
 
 MIDDLEWARE = [
