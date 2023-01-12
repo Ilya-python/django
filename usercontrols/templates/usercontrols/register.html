@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+
+    {% block title %}
+    <title>егисмтрация</title>
+    {% endblock %}
+
+{% block content %}
+<div class="left-ads-display col-lg-8">
+    <div class="row sub-para-w3layouts mt-5">
+        <div class="cent">
+<h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
+    Pегистрация</div>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Регистрация</button>
+</form>
+        </div>
+    </div>
+
+<style>
+    .cent{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    position: relative
+    }
+
+</style>
+
+{% endblock %}

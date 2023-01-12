@@ -23,7 +23,7 @@ urlpatterns = [
     path('test/', include('test_app.urls')),
     path('generate/', include('generator.urls')),
     path('', include('games.urls')),
-    #path('register/',include('usercontrols.urls'))
+    path('register/',include('usercontrols.urls'))
 
 ]
 
