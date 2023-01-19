@@ -3,7 +3,7 @@
 
 
     {% block title %}
-    <title>регистрация</title>
+    <title>login</title>
     {% endblock %}
 
 {% block content %}
@@ -11,11 +11,11 @@
     <div class="row sub-para-w3layouts mt-5">
         <div class="cent">
 <h3 class="shop-sing editContent" style="outline: none; cursor: inherit;">
-    Pегистрация
+    Вход
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
+    {{ forms.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Войти</button>
 </form></div>
 
         </div>

@@ -29,8 +29,12 @@
                                 </ul>
                             </li>
                             <li><a href="#">О нас</a></li>
-                            <li><a href="#" style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Вход</a></li>
+                            {% if request.user.is_authenticated %}
+                            <li><a href="#" style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">{{ user.username }}</a><a href="#" style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">выйти</a></li>
+                            {% else %}
+                            <li><a href="{% url 'login' %}" style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Вход</a></li>
                             <li><a href="{% url 'registr' %}" style="color: rgb(255, 255, 255); font-weight: 700; text-transform: uppercase;">Регистрация</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                     <!-- //nav -->
