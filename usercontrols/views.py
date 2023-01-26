@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import UserRedirecterForms, UserLoginForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -34,3 +35,14 @@ def user_login(request):
     else:
         form = UserLoginForm()
     return render(request, 'usercontrols/login.html', {'forms':form})
+
+
+def user_success_out(request):
+    logout(request)
+    return render(request,'usercontrols/logout.html')
+
+
+def add_comment(request, pk):
+    if request.method == 'POST':
+        print(request.POST)
+        return redirect('/')
