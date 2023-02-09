@@ -3,6 +3,8 @@ from .forms import UserRedirecterForms, UserLoginForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.http import HttpResponse
+from .forms import CommentForm
+from games.models import Games
 
 # Create your views here.
 
@@ -43,6 +45,13 @@ def user_success_out(request):
 
 
 def add_comment(request, pk):
+    form = CommentForm(request.POST)
     if request.method == 'POST':
-        print(request.POST)
-        return redirect('/')
+        form = form.save(commit=False)
+        if request.POST.get('parent', None):
+            form.parent_id = int(request.POST.get('parent'))
+        form.name = request.user
+        form.game_id = pk
+        form.save()
+        game = Games.objects.get(pk=pk)
+    return redirect(game.get_absolute_url())

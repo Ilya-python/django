@@ -35,5 +35,5 @@ class UserLoginForm(AuthenticationForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = Comments
         fields = ('text',)
