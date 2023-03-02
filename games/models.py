@@ -4,6 +4,7 @@ from PIL import Image
 from django.conf import settings
 import os
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -146,3 +147,27 @@ class SystemReq(models.Model):
     class Meta:
         verbose_name = 'Системные требования'
         verbose_name_plural = 'Системные требования'
+
+class RaitingStar(models.Model):
+    value = models.SmallIntegerField('Значение', default=0)
+
+    def __str__(self):
+        return f'{self.value}'
+
+    class Meta:
+        verbose_name = 'Звезды рейтинга'
+        verbose_name_plural = 'Звезды рейтинга'
+        ordering = ['-value']
+
+class Raiting(models.Model):
+    usrname = models.ForeignKey(User, verbose_name='Имя пользователя', on_delete=models.SET_NULL, null=True)
+    star = models.ForeignKey(RaitingStar, on_delete=models.CASCADE, verbose_name='Звезды рейтинга')
+    game = models.ForeignKey(Games, on_delete=models.CASCADE, verbose_name='Игра')
+
+
+    def __str__(self):
+        return f'{self.usrname} - {self.star} - {self.game}'
+
+    class Meta:
+        verbose_name = 'Рейтинг'
+        verbose_name_plural = 'Рейтинги'

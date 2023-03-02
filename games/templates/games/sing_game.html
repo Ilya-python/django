@@ -178,7 +178,7 @@
                         {% for comment in game.comments_set.all %}
 
                         <div class="media py-5">
-                            <img src="bundles/images/te2.jpg" class="mr-3 img-fluid" alt="image"
+                            <img src="https://icon2.cleanpng.com/20180611/csb/kisspng-computer-icons-user-profile-avatar-5b1ef064757309.0103850015287542764811.jpg" width="30px" height="30px" class="mr-3 img-fluid" alt="image"
                                  style="outline: none; cursor: inherit;">
                             <div class="media-body mt-4">
                                 <h5 class="mt-0 editContent"
@@ -186,7 +186,9 @@
                                 <p class="mt-2 editContent" style="outline: none; cursor: inherit;">
                                     {{ comment.text }}
                                 </p>
+                                {% if request.user.is_authenticated %}
                                 <a href="#formRewiew" onclick="addRew('{{comment.name.username}}','{{comment.id}}')">Ответить</a>
+                                {% endif %}
                                 </div>
                             </div>
                                 {% endfor %}
@@ -197,6 +199,8 @@
             function addRew(name,id) {
             document.getElementById('contactparent').value=id;
             document.getElementById('contactcomment').innerText = name;
+            document.getElementById('contactcomment').scrollIntoView({block: "center", behavior: "smooth"});
+
             }
         </script>
     {% endblock %}

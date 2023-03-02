@@ -21,7 +21,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Games, GamesAdmin)
-
+admin.site.register(RaitingStar)
+admin.site.register(Raiting)
 admin.site.register(Platforms)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Developers, DevelopersAdmin)

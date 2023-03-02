@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Games, Category, Developers, Platforms
 from django.db.models import Q
+from .forms import RaitingForm
 
 
 # Create your views here.
@@ -17,11 +18,12 @@ def index(request):
 
 def get_game(request, slug):
     """
-    отвечает за страницу содной игрой
+    отвечает за страницу с одной игрой
     :param slug Уникальный слаг игры
     """
     game = get_object_or_404(Games, game_slug=slug)
-    return render(request, 'games/sing_game.html', {'game': game})
+    star_form = RaitingForm()
+    return render(request, 'games/sing_game.html', {'game': game,'star_form':star_form})
 
 
 def index1(request):
@@ -79,3 +81,17 @@ def get_developers(request, slug):
     """
     dev = get_object_or_404(Developers, dev_slug=slug)
     return render(request, 'games/developers.html', {'dev': dev})
+
+
+def add_raiting(request):
+    form = RaitingForm(request.POST)
+    if form.is_valid():
+        Raiting.objects.update_or_create(
+            usrname=request.user,
+            game_id=int(request.POST.get('game')),
+            defaults={'star_id': int(request.POST.get('star'))}
+        )
+
+        return HttpResponse(status=201)
+    else:
+        return HttpResponse(status=400)

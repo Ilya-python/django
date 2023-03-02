@@ -10,5 +10,6 @@ urlpatterns = [
     path('sorry/', sorry_img, name='sorry'),
     path('plat/<int:plat_id>', get_platforms, name='plat'),
     path('category/<slug:slug>', get_category, name='cat'),
-    path('developers/<slug:slug>', get_developers, name='dev')
+    path('developers/<slug:slug>', get_developers, name='dev'),
+    path('add_rait', add_raiting, name='add_rating')
 ]
