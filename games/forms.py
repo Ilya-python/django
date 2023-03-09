@@ -5,8 +5,8 @@ from .models import Raiting, RaitingStar
 
 
 class RaitingForm(forms.ModelForm):
-    star = forms.ModelsChoiceField(
-        queryset=RaitingStar.object.all(),
+    star = forms.ModelChoiceField(
+        queryset=RaitingStar.objects.all(),
         widget=forms.RadioSelect,
         empty_label=None,)
 

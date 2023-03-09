@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
-from .models import Games, Category, Developers, Platforms
+from .models import Games, Category, Developers, Platforms, Raiting
 from django.db.models import Q
 from .forms import RaitingForm
 
@@ -23,7 +23,24 @@ def get_game(request, slug):
     """
     game = get_object_or_404(Games, game_slug=slug)
     star_form = RaitingForm()
-    return render(request, 'games/sing_game.html', {'game': game,'star_form':star_form})
+    context = {'game': game, 'star_form': star_form}
+    game_id = game.pk
+    all_stars = Raiting.objects.filter(game_id=game_id)
+    count_user_stars = len(all_stars)
+    avg_stars = 0
+    for star in all_stars:
+        avg_stars += star.star.value
+    if count_user_stars >0:
+        avg_stars = avg_stars / count_user_stars
+    else:
+        avg_stars = 0
+    context['avg_stars'] = str(round(avg_stars, 1))
+    context['count_user_stars'] = str(count_user_stars)
+    if request.user.username:
+        if Raiting.objects.filter(usrname=request.user, game_id=game_id).exists():
+            stars = Raiting.objects.get(usrname=request.user, game_id=game_id).star
+            context['stars'] = str(stars)
+    return render(request, 'games/sing_game.html', context)
 
 
 def index1(request):
