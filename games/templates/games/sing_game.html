@@ -54,6 +54,7 @@
                                 <li style="list-style: none">
                                               <form action="{% url 'add_rating' %}" method="post" name="rating">
                             <b>Рейтинг:</b>
+                            {% if request.user.is_authenticated %}
                             {% csrf_token %}
                             <input type="hidden" value="{{ game.id }}" name="game">
                             <span class="rating">
@@ -68,6 +69,11 @@
                                     <label for="rating{{ v }}">{{ k }}</label>
                                     {% endif %}
                                 {% endfor %}
+
+                                {% else %}
+                                <a href="{% url 'login' %}">войдите</a>
+                                {% endif %}
+
                                                             </span>
                              </form>
                                 </li>

@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Games, Category, Developers, Platforms, Raiting
 from django.db.models import Q
 from .forms import RaitingForm
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -12,7 +13,10 @@ def index(request):
     отвечает за гл страницу
     """
     content = Games.objects.filter(is_pub=True)
-    context = {'games': content, 'mark': 1}
+    paginator = Paginator(content, 1)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    context = {'games': content, 'page_obj': page_obj, 'mark': 1, 'p_diff': int(page_num)-1, 'p_add': int(page_num)+1}
     return render(request, 'games/games.html', context)
 
 
